@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js test</title>
+</head>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+#box {
+	margin: 100px;
+	width: 200px;
+	height: 200px;
+	background-color: #333;
+	opacity: 0;
+}
+.visible {
+	opacity: 1 !important;
+}
+</style>
+<body>
+
+	<div id="box"></div>
+
+	<script src="riddle.js"></script>
+	<script>
+	(function(){
+		function randRange(data){
+			var newTime = data[Math.floor(data.length * Math.random())];
+			return newTime;
+		}
+
+		function toggleSomething(){
+			var timeArray = new Array(200, 300, 150, 250, 2000, 3000, 1000, 1500);
+
+			r('#box').toggleClass('visible');
+
+			clearInterval(timer);
+			timer = setInterval(toggleSomething, randRange(timeArray));
+		}
+
+		var timer = setInterval(toggleSomething, 1000);
+	})();
+	</script>
+</body>
+</html>
