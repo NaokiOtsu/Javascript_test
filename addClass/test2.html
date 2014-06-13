@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js test</title>
+</head>
+<body>
+	<div id="changeme" class="big red"></div>
+	<div id="btn">Add a class</div>
+	
+	<script>
+	(function(){
+		function addClass(id, new_class){
+			var i,l,n=0;
+
+			new_class = new_class.split(",");
+
+			for(i=0,l=new_class.length; i < l; i++ ){
+				if((" " + document.getElementById(id).className + " ").indexOf(" " + new_class[i] + " ") == -1){
+					document.getElementById(id).className += " " + new_class[i];
+					n++;
+				}
+			}
+			return n;
+		}
+
+		document.getElementById('btn').addEventListener('click', function(){
+			addClass('changeme', 'round');
+		}, false);
+	})();
+	</script>
+</body>
+</html>
