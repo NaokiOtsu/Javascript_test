@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>js test</title>
+</head>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+</style>
+<body>
+	
+	<div id="result"></div>
+
+	<script>
+	(function(){
+		var currentTime = new Date().getTime(),
+			timerId;
+
+		function timerStart(){
+			timerId = setTimeout(function(){
+				timerUpdate();
+			}, 10);
+		}
+
+		function timerUpdate(){
+			var nowTime = new Date().getTime(),
+				diff = nowTime - currentTime,
+				resultTime;
+			
+			resultTime = (diff / 1000).toFixed(2);
+			if(resultTime > 5){
+				clearTimeout(timerId);
+				return;
+			}
+			timerStart();
+			document.getElementById('result').innerHTML = resultTime;
+
+		}
+
+		timerStart();
+	})();
+	</script>
+</body>
+</html>
